@@ -1,0 +1,5 @@
+
+stringa1="b'MmJhZDdmZGUzNmVmNTk0NWFjMGJiNDM0MjZlZjVmYmY2NmIzNDdiN2ZiYzAxZmU1OTJhYzA0MGQ4MTAxNWE3NDIyZGFkZGUyYWFkYWNiNjEyM2M4MDk2YTQzMTVjZmIwNjJkMWFjM2NkM2U4ODkzMmZjNGNjMTJiMjMwMjBhM2Y='"
+for x in stringa1:
+    print(chr(stringa1[x]))
+    

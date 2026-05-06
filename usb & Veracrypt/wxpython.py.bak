@@ -1,0 +1,129 @@
+# -*- coding: utf-8 -*-
+
+###########################################################################
+## Python code generated with wxFormBuilder (version 3.10.1-0-g8feb16b3)
+## http://www.wxformbuilder.org/
+##
+## PLEASE DO *NOT* EDIT THIS FILE!
+###########################################################################
+
+import wx
+import wx.xrc
+
+###########################################################################
+## Class MyFrame3
+###########################################################################
+
+class MyFrame3 ( wx.Frame ):
+
+	def __init__( self, parent ):
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = wx.EmptyString, pos = wx.DefaultPosition, size = wx.Size( 693,312 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+
+		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
+
+		bSizer3 = wx.BoxSizer( wx.VERTICAL )
+
+		gSizer2 = wx.GridSizer( 1, 2, 0, 0 )
+
+		gSizer2.SetMinSize( wx.Size( -1,20 ) )
+		self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText9.Wrap( -1 )
+
+		self.m_staticText9.SetMinSize( wx.Size( 500,-1 ) )
+
+		gSizer2.Add( self.m_staticText9, 10, wx.ALL, 5 )
+
+		self.Successivo1 = wx.Button( self, wx.ID_ANY, u"Successivo ->", wx.Point( 2,2 ), wx.DefaultSize, 0 )
+		gSizer2.Add( self.Successivo1, 0, wx.ALIGN_RIGHT, 5 )
+
+		self.successivo2 = wx.Button( self, wx.ID_ANY, u"Successivo -->", wx.Point( 2,2 ), wx.DefaultSize, 0 )
+		self.successivo2.Hide()
+
+		gSizer2.Add( self.successivo2, 0, 0, 5 )
+
+
+		bSizer3.Add( gSizer2, 1, wx.ALIGN_TOP, 5 )
+
+		bSizer4 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_staticText14 = wx.StaticText( self, wx.ID_ANY, u"PARAMETRI USB-KEY", wx.DefaultPosition, wx.Size( -1,-1 ), 0 )
+		self.m_staticText14.Wrap( -1 )
+
+		bSizer4.Add( self.m_staticText14, 0, wx.ALIGN_CENTER, 5 )
+
+
+		bSizer3.Add( bSizer4, 1, wx.EXPAND, 5 )
+
+		gSizer3 = wx.GridSizer( 0, 5, 0, 0 )
+
+		self.m_staticText10 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText10.Wrap( -1 )
+
+		gSizer3.Add( self.m_staticText10, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.ALL, 5 )
+
+		self.m_staticText11 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText11.Wrap( -1 )
+
+		self.m_staticText11.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNHIGHLIGHT ) )
+
+		gSizer3.Add( self.m_staticText11, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_LEFT|wx.ALL, 5 )
+
+		self.m_staticText12 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText12.Wrap( -1 )
+
+		gSizer3.Add( self.m_staticText12, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.ALL, 5 )
+
+		self.m_staticText13 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText13.Wrap( -1 )
+
+		self.m_staticText13.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNHIGHLIGHT ) )
+
+		gSizer3.Add( self.m_staticText13, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+
+		self.m_button10 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer3.Add( self.m_button10, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.ALL, 5 )
+
+
+		bSizer3.Add( gSizer3, 1, wx.EXPAND, 5 )
+
+		bSizer6 = wx.BoxSizer( wx.VERTICAL )
+
+		self.m_staticText15 = wx.StaticText( self, wx.ID_ANY, u"MyLabel", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_staticText15.Wrap( -1 )
+
+		bSizer6.Add( self.m_staticText15, 0, wx.ALL, 5 )
+
+		m_listBox2Choices = []
+		self.m_listBox2 = wx.ListBox( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, m_listBox2Choices, 0 )
+		bSizer6.Add( self.m_listBox2, 0, wx.ALL|wx.EXPAND, 5 )
+
+
+		bSizer3.Add( bSizer6, 1, wx.EXPAND, 5 )
+
+		gSizer5 = wx.GridSizer( 1, 2, 0, 0 )
+
+		self.m_button13 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer5.Add( self.m_button13, 0, wx.ALIGN_RIGHT|wx.ALL, 5 )
+
+		self.m_button14 = wx.Button( self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0 )
+		gSizer5.Add( self.m_button14, 0, wx.ALIGN_RIGHT|wx.ALL, 5 )
+
+
+		bSizer3.Add( gSizer5, 1, wx.ALIGN_RIGHT, 5 )
+
+
+		self.SetSizer( bSizer3 )
+		self.Layout()
+
+		self.Centre( wx.BOTH )
+
+		# Connect Events
+		self.Successivo1.Bind( wx.EVT_BUTTON, self.seipronto )
+
+	def __del__( self ):
+		pass
+
+
+	# Virtual event handlers, override them in your derived class
+	def seipronto( self, event ):
+		event.Skip()
