@@ -84,6 +84,8 @@ class EncryptorPro:
 
     def start(self):
         usb_id = self.get_usb_serial()
+        cryptokey="LcSFcf6tR4G^HW&uVwiBVe_Gn5HukvTm*@"+usb_id
+        print (cryptokey)
         if not self.file_path or not self.dest_dir:
             messagebox.showerror("Errore", "Seleziona file e destinazione")
             return
@@ -92,7 +94,7 @@ class EncryptorPro:
             return
         
         self.btn_run.config(state=tk.DISABLED)
-        threading.Thread(target=self.run_logic, args=(usb_id,)).start()
+        threading.Thread(target=self.run_logic, args=(cryptokey,)).start()
 
     def run_logic(self, pwd):
         try:
