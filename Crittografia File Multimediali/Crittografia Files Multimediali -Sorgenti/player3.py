@@ -92,7 +92,7 @@ class StealthPlayer:
             
             if os.path.exists(vlc_path):
                 self.status.config(text="In riproduzione...", fg="green")
-                subprocess.run([vlc_path, temp_path, "--play-and-exit", "--no-video-title-show", "vlc://quit"], check=True)
+                subprocess.run([vlc_path, temp_path, "--loop", "--fullscreen","--no-video-title-show"], check=True)
             else:
                 messagebox.showerror("Errore", f"VLCPortable non trovato in {vlc_path}")
         except Exception:
