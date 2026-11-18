@@ -1,0 +1,72 @@
+CRITTOGRAFIA FILE MULTIMEDIALI - VERSIONE 2
+===========================================
+
+FILE
+  comune.py               funzioni condivise (chiave, formato file, scadenza, USB)
+  prepara_chiavetta.py    -> Prepara_Chiavetta.exe (prepara la chiavetta in un colpo solo)
+  encryptor.py            -> Cripta_File.exe (cifra un singolo file, come prima)
+  player.py               -> Avvia_Video_Sicuro.exe
+  *.json                  configurazioni auto-py-to-exe
+
+Tutti i .py devono stare nella stessa cartella: PyInstaller include comune.py
+automaticamente in entrambi gli eseguibili.
+
+COMPILAZIONE
+  pip install pyAesCrypt wmi pywin32 pyinstaller
+  pyinstaller --onefile --windowed --name Cripta_File encryptor.py
+  pyinstaller --onefile --windowed --name Avvia_Video_Sicuro player.py
+  pyinstaller --onefile --windowed --uac-admin --name Prepara_Chiavetta prepara_chiavetta.py
+  (oppure caricare i due .json in auto-py-to-exe)
+  Gli .exe compaiono nella cartella "dist".
+
+NOVITA'
+  - Data di scadenza facoltativa: dopo quel giorno il video non si apre piu'.
+    La data e' legata alla chiave: modificarla nel file rende il file illeggibile.
+  - Controllo dell'orologio: se c'e' internet la data viene presa da un sito
+    affidabile; senza internet il programma rifiuta date precedenti all'ultimo
+    utilizzo della chiavetta (file nascosto ".cfm_stato") o alla creazione del video.
+  - La chiave usa la chiavetta scelta come destinazione (encryptor) e quella
+    da cui parte il player: non serve piu' togliere le altre USB.
+  - Il video decifrato temporaneo viene sovrascritto prima di essere cancellato;
+    eventuali residui di esecuzioni interrotte vengono cancellati all'avvio.
+  - Barra di avanzamento anche nella decifratura.
+  - Interfaccia aggiornata in modo sicuro dai thread (niente piu' blocchi casuali).
+  - File .aes parziali eliminati in caso di errore; controllo spazio libero;
+    conferma prima di sovrascrivere; messaggi d'errore specifici.
+  - Tolto il print della chiave.
+  - Compatibile con i file .aes creati con la versione precedente (senza scadenza).
+
+PROVA DELLA SCADENZA
+  Dal Prompt dei comandi:  E:\Avvia_Video_Sicuro.exe --data-prova GG/MM/AAAA
+  Simula una data futura (le date passate vengono ignorate, quindi non serve
+  ad allungare la validita'). In prova il file .cfm_stato non viene modificato.
+  Nel titolo della finestra compare "PROVA con data ...".
+
+VIDEO NASCOSTI
+  Con l'opzione "Lascia visibile solo il player" di Prepara_Chiavetta la cartella
+  VLCPortable e i file .aes sono nascosti; con piu' video il player mostra un
+  proprio elenco per sceglierli.
+
+OPZIONI (in cima a player.py)
+  MODALITA_STREAMING = True   decifra al volo verso VLC senza file temporaneo.
+                              Niente loop ne' avanti/indietro; MP4 solo se
+                              "faststart" (meglio MKV o TS).
+  CONTROLLO_ORA_ONLINE = False  per non usare mai internet.
+
+PREPARAZIONE CHIAVETTA (automatica)
+  1) Mettere Prepara_Chiavetta.exe nella cartella "Eseguibili", insieme a
+     Avvia_Video_Sicuro.exe e alla cartella VLCPortable (vengono trovati da soli).
+  2) Avviarlo (chiede i permessi di amministratore: servono per formattare).
+  3) Scegliere chiavetta, uno o piu' video, scadenza facoltativa, PREPARA CHIAVETTA.
+     Il programma formatta (se richiesto), copia player e VLC, cifra e verifica.
+  4) Per la chiavetta successiva: inserirla, premere "Aggiorna", ripetere.
+  Formattare non cambia il numero di serie della chiavetta (e' quello hardware).
+
+PREPARAZIONE CHIAVETTA (manuale, come prima)
+  Formattare, copiare VLCPortable e Avvia_Video_Sicuro.exe, poi usare Cripta_File.exe.
+
+LIMITI
+  La scadenza e il legame con la chiavetta scoraggiano la copia e l'uso oltre
+  il termine, ma non sono inattaccabili: chi estrae il codice dall'exe o
+  cancella il file di stato e lavora offline con l'orologio indietro
+  (non prima della data di creazione) puo' aggirarli.
